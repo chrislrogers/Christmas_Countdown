@@ -3,8 +3,7 @@ let interval;
 
 function timer() {
     let current = new Date().getTime();
-    let difference = christmas - current;
-    
+    let difference = christmas - current;    
     let days, hrs, mins, secs;
     
     days = Math.floor(difference / (1000*60*60*24));
@@ -27,7 +26,6 @@ function timer() {
     if (secs < 10) {
         secs = "0" + secs;
     }
-    
     if (difference < 0) {
         clearInterval(interval);
         return "It's Christmas Today.";
@@ -38,14 +36,13 @@ function timer() {
 
 function start() {
     let today = new Date();
-
     let year = today.getFullYear();
     let month = today.getMonth();
     let day = today.getDate();
-
     if (month === 11 && day >= 26){
         year++;
     }
+    document.getElementById("year").innerHTML = year;
     christmas = new Date("Dec 25, " + year + " 00:00:00").getTime();
     interval = setInterval(() => {countdown.innerHTML = timer()}, 1000);
 }
