@@ -12,6 +12,10 @@ function timer() {
     mins = Math.floor((difference % (1000*60*60)) / (1000*60));
     secs = Math.floor((difference % (1000*60)) / 1000);
     
+    if (secs < 10) {
+        secs = "0" + secs;
+    }
+    
     if (difference < 0) {
         clearInterval(interval);
         return "It's Christmas Today.";
