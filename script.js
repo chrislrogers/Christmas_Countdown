@@ -12,6 +12,18 @@ function timer() {
     mins = Math.floor((difference % (1000*60*60)) / (1000*60));
     secs = Math.floor((difference % (1000*60)) / 1000);
     
+    if (days < 100) {
+        days = "0" + days;
+        if (days < 10) {
+            days = "0" + days;
+        }
+    }
+    if (hrs < 10) {
+        hrs = "0" + hrs;
+    }
+    if (mins < 10) {
+        mins = "0" + mins;
+    }
     if (secs < 10) {
         secs = "0" + secs;
     }
