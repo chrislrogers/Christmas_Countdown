@@ -24,3 +24,7 @@ body {
 #secs {
   color: white;
 }
+::selection {
+  color: red;
+  background: white;
+}
