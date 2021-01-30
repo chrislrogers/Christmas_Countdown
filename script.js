@@ -10,13 +10,7 @@ function timer() {
     hrs = Math.floor((difference % (1000*60*60*24)) / (1000*60*60));
     mins = Math.floor((difference % (1000*60*60)) / (1000*60));
     secs = Math.floor((difference % (1000*60)) / 1000);
-    
-    if (days < 100) {
-        days = "0" + days;
-        if (days < 10) {
-            days = "0" + days;
-        }
-    }
+
     if (hrs < 10) {
         hrs = "0" + hrs;
     }
@@ -39,7 +33,7 @@ function start() {
     let year = today.getFullYear();
     let month = today.getMonth();
     let day = today.getDate();
-    if (month === 11 && day >= 26){
+    if (month === 11 && day >= 26) {
         year++;
     }
     document.getElementById("year").innerHTML = year;
