@@ -3,13 +3,13 @@ let interval;
 
 function timer() {
     let current = new Date().getTime();
-    let difference = christmas - current;    
+    let difference = christmas - current;
     let days, hrs, mins, secs;
-    
-    days = Math.floor(difference / (1000*60*60*24));
-    hrs = Math.floor((difference % (1000*60*60*24)) / (1000*60*60));
-    mins = Math.floor((difference % (1000*60*60)) / (1000*60));
-    secs = Math.floor((difference % (1000*60)) / 1000);
+
+    days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    hrs = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    mins = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    secs = Math.floor((difference % (1000 * 60)) / 1000);
 
     if (hrs < 10) {
         hrs = "0" + hrs;
@@ -38,7 +38,7 @@ function start() {
     }
     document.getElementById("year").innerHTML = year;
     christmas = new Date("Dec 25, " + year + " 00:00:00").getTime();
-    interval = setInterval(() => {countdown.innerHTML = timer()}, 1000);
+    interval = setInterval(() => { countdown.innerHTML = timer() }, 1000);
 }
 
 window.addEventListener('load', start);
