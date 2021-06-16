@@ -25,9 +25,14 @@ class Snow {
 
     update() {
         this.y += this.dy
-        this.x += Math.random() < 0.5 ? -1 : 1;
+        this.x += Math.random() < 0.5 ? -.1 : .1;
         if (this.y > canvas.height + this.radius) {
             this.y = Math.floor((Math.random() * canvas.height) + -canvas.height);
+        }
+        if (this.x > canvas.width) {
+            this.x = 0;
+        } else if (this.x < 0) {
+            this.x = canvas.width;
         }
     }
 }
@@ -76,7 +81,7 @@ function start() {
 let snowArray = [];
 
 for (let i = 0; i < 50; i++) {
-    snowArray.push(new Snow(Math.random() * innerWidth, Math.floor((Math.random() * canvas.height) + -canvas.height), 0, 2, 10));
+    snowArray.push(new Snow(Math.random() * innerWidth, Math.floor((Math.random() * canvas.height) + -canvas.height), 0, .5, 10));
 }
 
 function animate() {
