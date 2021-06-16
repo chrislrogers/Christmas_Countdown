@@ -20,6 +20,8 @@ class Snow {
         c.beginPath();
         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         c.fillStyle = 'white';
+        c.shadowBlur = 10;
+        c.shadowColor = "white";
         c.fill();
     }
 
