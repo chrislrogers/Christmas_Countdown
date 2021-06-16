@@ -1,5 +1,36 @@
+const canvas = document.querySelector('canvas');
+const c = canvas.getContext('2d');
+
+canvas.height = window.innerHeight - 5;
+canvas.width = window.innerWidth;
+
 let christmas;
 let interval;
+
+class Snow {
+    constructor(x, y, dx, dy, radius) {
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+        this.radius = radius;
+    }
+
+    draw() {
+        c.beginPath();
+        c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        c.fillStyle = 'white';
+        c.fill();
+    }
+
+    update() {
+        this.y += this.dy
+        this.x += Math.random() < 0.5 ? -1 : 1;
+        if (this.y > canvas.height + this.radius) {
+            this.y = Math.floor((Math.random() * canvas.height) + -canvas.height);
+        }
+    }
+}
 
 function timer() {
     let current = new Date().getTime();
@@ -39,6 +70,24 @@ function start() {
     document.getElementById("year").innerHTML = year;
     christmas = new Date("Dec 25, " + year + " 00:00:00").getTime();
     interval = setInterval(() => { countdown.innerHTML = timer() }, 1000);
+    animate();
+}
+
+let snowArray = [];
+
+for (let i = 0; i < 50; i++) {
+    snowArray.push(new Snow(Math.random() * innerWidth, Math.floor((Math.random() * canvas.height) + -canvas.height), 0, 2, 10));
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    c.clearRect(0, 0, innerWidth, innerHeight);
+
+
+    for (let snowflake of snowArray) {
+        snowflake.update();
+        snowflake.draw();
+    }
 }
 
 window.addEventListener('load', start);
